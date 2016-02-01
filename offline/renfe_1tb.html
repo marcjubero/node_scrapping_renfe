@@ -1,0 +1,984 @@
+<!--hjcer310.jsp versión:  ver FEB 2004  --->
+<!--
+/******************************************************************************
+  * FICHERO: hjcer310.jsp
+  * ****************************************************************************
+  * Fecha         	Responsable     	 Descripción
+  * --------     	------------         -----------------
+  * 28/11/2011		INDRA.SCCID73	 	 44622 (INC000000293596): Horarios de Cataluña
+  *****************************************************************************/
+-->
+<!--RNF09-CER001 RQ CERRF001 Introducir i18n en cercanías.-->
+<!--FIN RNF09-CER001 RQ CERRF001.-->
+<html>
+    <!-- hjcer312.jsp versión nueva web feb 2009  -->
+    <html>
+        <head>
+            <link rel="stylesheet" href="/cer/css/style_cer.css">
+            <!--RNF09-CER001 RQ CERRF001 Introducir i18n en cercanías.-->
+            <title>RENFE: Cercanías </title>
+            <!--FIN RNF09-CER001 RQ CERRF001.-->
+            <style type="text/css">
+.TA {scrollbar-3dlight-color:;
+     scrollbar-arrow-color:#666666;
+     scrollbar-base-color:#ffffff;
+     scrollbar-darkshadow-color:#ffffff;
+     scrollbar-face-color:#EDEBEB;
+     scrollbar-highlight-color:#ffffff;
+     scrollbar-shadow-color:#666666
+	 }
+
+body {
+	font-size:62.5%;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+
+}
+
+#contenedor {
+	 width:100%;
+	 height:auto;
+	 margin-left:10px;
+	 font-size:1em;
+	 font-family:Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	text-decoration: none;
+	color: #000000;
+	font-style: normal;
+ }
+
+
+h1 {
+	margin-left:1em;
+	font-size: 1.3em;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #D2200A;
+	font-style: normal;
+	line-height: 1.2em;
+	font-weight: normal;
+	margin-right: 0.5em;
+}
+
+h2 {
+	margin-left:15px;
+	font-size: 1.2em;
+	font-family: Verdana,Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #666666;
+	font-style: normal;
+	font-weight: normal;
+}
+
+
+
+h3 {
+	margin-left:1em;
+	font-size: 1em;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #666666;
+	font-style: normal;
+	line-height: 1.2em;
+	font-weight: normal;
+	margin-right: 0.5em;
+}
+
+h4 {
+	margin-left:1em;
+	font-size: 1.2em;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #000000;
+	font-style: normal;
+	line-height: 1.2em;
+	font-weight: normal;
+	margin-right: 0.5em;
+	}
+
+.caja_texto {
+	BORDER-RIGHT: #cccccc 0.1em solid;
+	BORDER-TOP: #cccccc 1px solid;
+	FONT-SIZE: 0.8em;
+	BORDER-LEFT: #cccccc 1px solid;
+	BORDER-BOTTOM: #cccccc 0.1em solid;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	HEIGHT: 1.5em;
+	BACKGROUND-COLOR: #ffffff
+	}
+
+#menuderecho_lineagris {
+	list-style-position: inherit;
+	margin-left: 5px;
+	line-height: 10px;
+	background-image: url("/cer/gif/back_pgris.gif");
+}
+
+
+
+.titulo_rojo {
+	margin-left:1em;
+	font-size: 1.3em;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #D2200A;
+	font-style: normal;
+	line-height: 1.2em;
+	font-weight: normal;
+	margin-right: 0.5em;
+}
+
+
+.titulo_negro {
+	margin-left:1em;
+	font-size: 1.1em;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #000000;
+	font-style: normal;
+	line-height: 1.2em;
+	font-weight: normal;
+	margin-right: 0.5em;
+}
+
+.titulo_gris {
+	margin-left:1em;
+	font-size: 1.3em;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #666666;
+	font-style: normal;
+	line-height: 1.2em;
+	font-weight: normal;
+	margin-right: 0.5em;
+}
+
+
+#fondo_caja {
+	background-color:#F2F2F2;
+	height:25px;
+	margin-left:1em;
+	font-size: 1.1em;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #000000;
+	font-style: normal;
+	line-height: 1.2em;
+	font-weight: normal;
+	margin-right: 0.5em;
+
+}
+
+A.linkgris {
+	FONT-SIZE: 1.1em; COLOR: #666666; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none; line-height:auto;
+}
+
+A.linkgris:hover {
+	FONT-SIZE: 1.1em; COLOR: #D2200A; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline; line-height:auto;
+
+}
+
+
+.celda_pijama_gris {
+	margin-left:5px;
+	font-size: 0.8em;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #666666;
+	font-style: normal;
+	line-height:normal;
+	font-weight: normal;
+	text-align:center;
+	background-color:#F5F6F6;
+}
+
+
+.celda_txto_negro {
+	margin-left:5px;
+	font-size: 0.9em;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	text-align:center;
+	}
+
+
+.celda_pijama_negro {
+	margin-left:5px;
+	font-size: 0.9em;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	text-align:center;
+	background-color:#F5F6F6;
+	}
+
+
+.cabe{
+	font:0.8em;
+	font-family:Arial, Helvetica, sans-serif;
+	background-color: rgb(193,51,51);
+	color: #FFFFFF;
+	}
+
+.rojo   {font:10px Arial, Helvetica, sans-serif; color:red; background-color: rgb(191,216,216); }
+.azul   {font:10px Arial, Helvetica, sans-serif; background-color: rgb(191,216,216);}
+
+.cabecera2   {font:11pt arial;  background-color: rgb(222,219,219); color: black;}
+.esta   {font:10px Arial, Helvetica, sans-serif;
+background-color: rgb(255,204,204);
+
+}
+   .color1 {font:0.7em Arial, Helvetica, sans-serif; background-color: rgb(192,192,192);}
+   .color2 {font:0.7em Arial, Helvetica, sans-serif; background-color: rgb(222,219,219);}
+   .color3 {font:0.7em Arial, Helvetica, sans-serif; background-color:#e0e0e0;}
+
+   .rojo1  {font:0.7em Arial, Helvetica, sans-serif; color:red; background-color: rgb(192,192,192); }
+   .rojo2  {font:0.7em Arial, Helvetica, sans-serif; color:red; background-color: rgb(192,192,192); }
+   .rojo3  {font:0.7em Arial, Helvetica, sans-serifl; color:red;background-color: rgb(222,219,219); }
+   .gris   {font:0.7em Arial, Helvetica, sans-serif; background-color: rgb(192,192,192); }
+   .grismejor  {font:0.7em Arial, Helvetica, sans-serif; background-color: rgb(192,192,192);
+               color:yellow; }
+   .azulmejor  {font:0.7em Arial, Helvetica, sans-serif; background-color: rgb(191,216,216);
+               color:yellow;}
+   .griso  {font:0.7em Arial, Helvetica, sans-serif; background-color: rgb(168,168,168); }
+</style>
+
+        </head>
+        <body bgcolor="FFFFFF" class="TA" text="000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+            <div id="contenedor">
+                <h1>
+                    <!--RNF09-CER001 RQ CERRF001 Introducir i18n en cercanías.-->
+Horarios Solicitados
+
+                    <!--FIN RNF09-CER001 RQ CERRF001.-->
+
+                </h1>
+                <h4>
+
+   Horarios válidos desde
+                    <b> 29-01-2016 </b>
+   hasta
+                    <b> 29-01-2016 </b>
+                    <br>
+                    <br>
+                    <a href="/cer/hjcer310.jsp?&nucleo=50&o=71709
+&d=72400&tc=DIA&td=D&df=20160129&th=1
+&ho=00&i=s&cp=&TXTInfo=" class="titulo_negro">
+                        <img src="/cer/gif/cerinverso.jpg" border=0 alt="Solicitar los Horarios de Regreso en el día">
+Solicitar los Horarios de Regreso en el día
+                    </a>
+                    <div id="imprimir">
+                        <a href="javascript:window.print();" id="imprimir" class="titulo_negro">
+                            <img src="/cer/gif/cercaimp.jpg" border=0 alt="Imprimir horarios"> Imprimir horarios
+                        </a>
+
+                    </div>
+
+
+                </h4>
+                <span class="titulo_rojo">Origen :</span>
+                <span class="titulo_negro">Aeroport                                </span>
+                <br>
+                <span class="titulo_rojo">Destino  :</span>
+                <span class="titulo_negro">Viladecans
+	</span>
+                <br>
+                <br>
+                <span class="titulo_rojo">Día de viaje:  :</span>
+                <span class="titulo_negro">29-01-2016</span>
+                <br>
+                <br>
+                <br>
+                <br>
+                <table border="0" width="100%" cellpadding="1" cellspacing="1" align="center">
+                    <tbody>
+                        <tr>
+                            <td align=center valign="middle" colspan="5">
+                                <tr>
+                                    <td valign=center class='cabe' align=center rowspan=3> Línea            </td>
+                                    <td valign=center class='cabe' align=center rowspan=3> Salida
+
+                                        <br>
+            Origen
+                                    </td>
+                                    <td class='cabe' colspan=2 align=center>Transbordo en</td>
+                                    <td valign=center class='cabe' align=center rowspan=3> Línea            </td>
+                                    <td valign=center class='cabe' align=center rowspan=3> Llegada
+                                        <br>
+
+            Destino
+                                    </td>
+                                    <td valign=center class='cabe' align=center rowspan=3> Tiempo de Viaje            </td>
+
+                                </tr>
+                                <tr>
+                                    <td class='cabe' colspan=2 align=center>El Prat de Llobregat                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class='cabe' align=center>Llegada</td>
+                                    <td class='cabe' align=center>Salida</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 05.42 </td>
+                                    <td class="color2" align=center> 05.47</td>
+                                    <td class="color3" align=center> 05.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 06.00</td>
+                                    <td class="color3" align=center> 0.18 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 06.08 </td>
+                                    <td class="color2" align=center> 06.13</td>
+                                    <td class="color3" align=center> 06.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 06.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 06.38 </td>
+                                    <td class="color2" align=center> 06.43</td>
+                                    <td class="color3" align=center> 06.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 07.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 07.03 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 07.07</td>
+                                    <td class="color3" align=center> 0.29 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 07.08 </td>
+                                    <td class="color2" align=center> 07.13</td>
+                                    <td class="color3" align=center> 07.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 07.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 07.33 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 07.37</td>
+                                    <td class="color3" align=center> 0.29 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 07.38 </td>
+                                    <td class="color2" align=center> 07.43</td>
+                                    <td class="color3" align=center> 07.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 08.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 08.03 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 08.07</td>
+                                    <td class="color3" align=center> 0.29 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 08.08 </td>
+                                    <td class="color2" align=center> 08.13</td>
+                                    <td class="color3" align=center> 08.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 08.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 08.29 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 08.33</td>
+                                    <td class="color3" align=center> 0.25 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 08.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 08.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 08.38 </td>
+                                    <td class="color2" align=center> 08.43</td>
+                                    <td class="color3" align=center> 08.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 09.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 09.03 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 09.07</td>
+                                    <td class="color3" align=center> 0.29 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 09.08 </td>
+                                    <td class="color2" align=center> 09.13</td>
+                                    <td class="color3" align=center> 09.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 09.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 09.31 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 09.35</td>
+                                    <td class="color3" align=center> 0.27 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 09.38 </td>
+                                    <td class="color2" align=center> 09.43</td>
+                                    <td class="color3" align=center> 09.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 10.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 10.02 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 10.06</td>
+                                    <td class="color3" align=center> 0.28 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 10.08 </td>
+                                    <td class="color2" align=center> 10.13</td>
+                                    <td class="color3" align=center> 10.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 10.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 10.38 </td>
+                                    <td class="color2" align=center> 10.43</td>
+                                    <td class="color3" align=center> 10.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 11.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 11.08 </td>
+                                    <td class="color2" align=center> 11.13</td>
+                                    <td class="color3" align=center> 11.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 11.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 11.38 </td>
+                                    <td class="color2" align=center> 11.43</td>
+                                    <td class="color3" align=center> 11.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 12.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 12.08 </td>
+                                    <td class="color2" align=center> 12.13</td>
+                                    <td class="color3" align=center> 12.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 12.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 12.38 </td>
+                                    <td class="color2" align=center> 12.43</td>
+                                    <td class="color3" align=center> 12.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 13.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 13.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 13.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 13.08 </td>
+                                    <td class="color2" align=center> 13.13</td>
+                                    <td class="color3" align=center> 13.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 13.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 13.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 13.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 13.38 </td>
+                                    <td class="color2" align=center> 13.43</td>
+                                    <td class="color3" align=center> 13.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 14.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 14.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 14.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 14.08 </td>
+                                    <td class="color2" align=center> 14.13</td>
+                                    <td class="color3" align=center> 14.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 14.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 14.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 14.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 14.38 </td>
+                                    <td class="color2" align=center> 14.43</td>
+                                    <td class="color3" align=center> 14.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 15.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 15.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 15.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 15.08 </td>
+                                    <td class="color2" align=center> 15.13</td>
+                                    <td class="color3" align=center> 15.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 15.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 15.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 15.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 15.38 </td>
+                                    <td class="color2" align=center> 15.43</td>
+                                    <td class="color3" align=center> 15.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 16.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 16.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 16.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 16.08 </td>
+                                    <td class="color2" align=center> 16.13</td>
+                                    <td class="color3" align=center> 16.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 16.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 16.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 16.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 16.38 </td>
+                                    <td class="color2" align=center> 16.43</td>
+                                    <td class="color3" align=center> 16.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 17.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 17.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 17.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 17.08 </td>
+                                    <td class="color2" align=center> 17.13</td>
+                                    <td class="color3" align=center> 17.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 17.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 17.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 17.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 17.38 </td>
+                                    <td class="color2" align=center> 17.43</td>
+                                    <td class="color3" align=center> 17.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 18.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 18.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 18.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 18.08 </td>
+                                    <td class="color2" align=center> 18.13</td>
+                                    <td class="color3" align=center> 18.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 18.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 18.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 18.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 18.38 </td>
+                                    <td class="color2" align=center> 18.43</td>
+                                    <td class="color3" align=center> 18.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 19.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 19.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 19.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 19.08 </td>
+                                    <td class="color2" align=center> 19.13</td>
+                                    <td class="color3" align=center> 19.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 19.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 19.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 19.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 19.38 </td>
+                                    <td class="color2" align=center> 19.43</td>
+                                    <td class="color3" align=center> 19.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 20.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 20.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 20.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 20.08 </td>
+                                    <td class="color2" align=center> 20.13</td>
+                                    <td class="color3" align=center> 20.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 20.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 20.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 20.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 20.38 </td>
+                                    <td class="color2" align=center> 20.43</td>
+                                    <td class="color3" align=center> 20.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 21.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 21.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 21.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 21.08 </td>
+                                    <td class="color2" align=center> 21.13</td>
+                                    <td class="color3" align=center> 21.26 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 21.30</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 21.34 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 21.38</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 21.38 </td>
+                                    <td class="color2" align=center> 21.43</td>
+                                    <td class="color3" align=center> 21.56 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 22.00</td>
+                                    <td class="color3" align=center> 0.22 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center>  </td>
+                                    <td class="color2" align=center>  </td>
+                                    <td class="color2" align=center> </td>
+                                    <td class="color3" align=center> 22.04 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 22.08</td>
+                                    <td class="color3" align=center> 0.30 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 22.38 </td>
+                                    <td class="color2" align=center> 22.43</td>
+                                    <td class="color3" align=center> 22.47 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 22.51</td>
+                                    <td class="color3" align=center> 0.13 </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="color1" align=center> R2   </td>
+                                    <td class="color2" align=center> 23.38 </td>
+                                    <td class="color2" align=center> 23.43</td>
+                                    <td class="color3" align=center> 23.52 </td>
+                                    <td class="color2" align=center> R2   </td>
+                                    <td class="color1" align=center> 23.57</td>
+                                    <td class="color3" align=center> 0.19 </td>
+
+                                </tr>
+
+
+
+
+
+                            </tbody>
+
+                        </table>
+                        <br>
+                        <br>
+                        <div id="volver" style="margin-right:10px;width:100%;padding-right:15px" align="right">
+                            <a href="javascript:history.go(-1);" class="linkgris">
+                                <img src="/cer/gif/boton_volver2_castellano.gif" border=0 alt="Volver ">
+                            </a>
+                        </div>
+                        <br>
+                        <br>
+
+
+
+
+                    </div>
+
+
+
+
+
+
+                </body>
+
+            </html>
