@@ -11,6 +11,7 @@
         "async": "latest",
         "request": "latest",
         "cheerio": "latest",
+        "iconv-lite":"latest",
         "utf8":"latest",
         "fs": "latest"
     }

@@ -31,8 +31,9 @@ function readFile(path) {
 function getStations() {
     request({method: 'GET', encoding: null, uri: urlStations}, function(error, response, html) {
             if(!error && response.statusCode == 200) {
-                var stations = [];
-                var $ = cheerio.load(iconv.decode(new Buffer(html), "ISO-8859-1"));
+                var stations = [],
+                    $ = cheerio.load(iconv.decode(new Buffer(html), "ISO-8859-1"));
+                    
                 $('select.caja_texto1').first().children().each(function(i, element) {
                     var a = $(this),
                         text = a.text().replace(/\s+/g,' ').replace(/^\s+|\s+$/,''),
@@ -59,9 +60,9 @@ function parseSchedule(data, changes) {
 var urlRequest = urlSchedule + twoChanges
 request({method: 'GET', encoding: null, uri: urlRequest}, function(error,response, html) {
     if(!error && response.statusCode == 200) {
-        var $ = cheerio.load(html);
-        var scheduleTable = $('tbody').children();
-        var countChanges = (scheduleTable.toString().match(/Transbordo/g) || []).length;
+        var $ = cheerio.load(html),
+            scheduleTable = $('tbody').children(),
+            ountChanges = (scheduleTable.toString().match(/Transbordo/g) || []).length;
         console.log("#Changes: " + countChanges);
 
         $(scheduleTable).each(function(i, element) {
