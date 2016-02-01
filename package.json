@@ -1,0 +1,17 @@
+{
+    "name": "scraping_renfe",
+    "version": "0.0.1",
+    "main": "server.js",
+    "author": "marcjubero",
+    "licence": "CC",
+    "description": "bla bla bla",
+    "dependencies":
+    {
+        "express": "latest",
+        "async": "latest",
+        "request": "latest",
+        "cheerio": "latest",
+        "utf8":"latest",
+        "fs": "latest"
+    }
+}
