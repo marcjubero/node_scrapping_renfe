@@ -18,8 +18,9 @@ function writeFile(data) {
     });
 }
 
-function readFile() {
-    fs.readFile( 'renfe_1tb.html', function (err, data) {
+function readFile(path) {
+    // path -> ./offline/renfe_[0,1,2]tb.html
+    fs.readFile(path, function (err, data) {
         if (err) {
             return console.log(err);
         }
