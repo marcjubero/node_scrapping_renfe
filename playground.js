@@ -33,15 +33,15 @@ function getStations() {
             if(!error && response.statusCode == 200) {
                 var stations = [],
                     $ = cheerio.load(iconv.decode(new Buffer(html), "ISO-8859-1"));
-                    
+
                 $('select.caja_texto1').first().children().each(function(i, element) {
                     var a = $(this),
                         text = a.text().replace(/\s+/g,' ').replace(/^\s+|\s+$/,''),
                         value = a.attr('value');
 
                     if(i > 0) {
-                        stations.push({ "value": value, "name": text})
-                        console.log({ "value": value, "name": text});
+                        stations.push({ "code": value, "name": text})
+                        console.log({ "code": value, "name": text});
                     }
                 });
             }
@@ -49,28 +49,55 @@ function getStations() {
     );
 }
 
-function parseSimpleSchedule (data) {
-    // TODO: Cosas nazis
+function parseNoChangeSchedule (data) {
+    console.log("-> 0 changes sch");
+    return data.map(function(elem) {
+        return {
+            "line": elem[0],
+            "dep_time": elem[1],
+            "arr_rime": elem[2],
+            "total_time": elem[3]
+        }
+    }).slice(2);
 }
 
-function parseSchedule(data, changes) {
-    // TODO: Cosas aún mas nazis
+function parseSingleChangeSchedule(data) {
+    console.log("-> 1 changes sch");
 }
 
-var urlRequest = urlSchedule + twoChanges
+function parseMultiChangesSchedule(data) {
+    console.log("-> 2 changes sch");
+}
+
+function parseScheduleArray(data, changes) {
+    console.log("-> parsing schedule");
+    var parsedJsonSchedule = (changes == 0) ? parseNoChangeSchedule(data) : (changes >= 2) ? parseMultiChangesSchedule(data) : parseSingleChangeSchedule(data);
+
+    console.log(parsedJsonSchedule)
+    //console.log(parseScheduleArray)
+
+    //return parsedJsonSchedule;
+}
+
+var urlRequest = urlSchedule + noChanges
 request({method: 'GET', encoding: null, uri: urlRequest}, function(error,response, html) {
     if(!error && response.statusCode == 200) {
-        var $ = cheerio.load(html),
+        var tripSchedule = [],
+            $ = cheerio.load(html),
             scheduleTable = $('tbody').children(),
-            ountChanges = (scheduleTable.toString().match(/Transbordo/g) || []).length;
+            countChanges = (scheduleTable.toString().match(/Transbordo/g) || []).length;
+
         console.log("#Changes: " + countChanges);
-
         $(scheduleTable).each(function(i, element) {
-            console.log("\n");
-
+            var partialSchedule = [];
             $(this).children().each(function(i, element) {
-                console.log(i + " -> " + $(this).html())
+                partialSchedule.push($(this).html())
             });
+            tripSchedule.push(partialSchedule)
         });
+
+        //console.log(tripSchedule)
+        parseScheduleArray(tripSchedule,countChanges);
+        //console.log(jsonSchedule)
     }
 });
