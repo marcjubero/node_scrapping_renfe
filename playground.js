@@ -50,7 +50,7 @@ function getStations() {
 }
 
 function parseNoChangeSchedule (data) {
-    console.log("-> 0 changes sch");
+    console.log("-> parse 0 changes sch");
     return data.map(function(elem) {
         return {
             "line": elem[0],
@@ -62,15 +62,14 @@ function parseNoChangeSchedule (data) {
 }
 
 function parseSingleChangeSchedule(data) {
-    console.log("-> 1 changes sch");
+    console.log("-> parse 1 changes sch");
 }
 
 function parseMultiChangesSchedule(data) {
-    console.log("-> 2 changes sch");
+    console.log("-> parse 2 changes sch");
 }
 
 function parseScheduleArray(data, changes) {
-    console.log("-> parsing schedule");
     var parsedJsonSchedule = (changes == 0) ? parseNoChangeSchedule(data) : (changes >= 2) ? parseMultiChangesSchedule(data) : parseSingleChangeSchedule(data);
 
     console.log(parsedJsonSchedule)
@@ -87,7 +86,6 @@ request({method: 'GET', encoding: null, uri: urlRequest}, function(error,respons
             scheduleTable = $('tbody').children(),
             countChanges = (scheduleTable.toString().match(/Transbordo/g) || []).length;
 
-        console.log("#Changes: " + countChanges);
         $(scheduleTable).each(function(i, element) {
             var partialSchedule = [];
             $(this).children().each(function(i, element) {
