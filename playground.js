@@ -98,9 +98,6 @@ request({method: 'GET', encoding: null, uri: urlRequest}, function(error,respons
             });
             tripSchedule.push(partialSchedule)
         });
-
-        //console.log(tripSchedule)
         parseScheduleArray(tripSchedule.slice(2),countChanges);
-        //console.log(jsonSchedule)
     }
 });
