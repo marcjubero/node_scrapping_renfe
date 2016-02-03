@@ -28,6 +28,10 @@ function readFile(path) {
     });
 }
 
+function deleteExtraWhitespaces (text) {
+    return text.replace(/\s+/g,' ').replace(/^\s+|\s+$/,'')
+}
+
 function getStations() {
     request({method: 'GET', encoding: null, uri: urlStations}, function(error, response, html) {
             if(!error && response.statusCode == 200) {
@@ -51,6 +55,7 @@ function getStations() {
 
 function parseNoChangeSchedule (data) {
     console.log("-> parse 0 changes sch");
+    console.log(data);
     return data.map(function(elem) {
         return {
             "line": elem[0],
@@ -58,27 +63,27 @@ function parseNoChangeSchedule (data) {
             "arr_rime": elem[2],
             "total_time": elem[3]
         }
-    }).slice(2);
+    });
 }
 
 function parseSingleChangeSchedule(data) {
     console.log("-> parse 1 changes sch");
+    console.log(data);
 }
 
 function parseMultiChangesSchedule(data) {
     console.log("-> parse 2 changes sch");
+    console.log(data);
 }
 
 function parseScheduleArray(data, changes) {
     var parsedJsonSchedule = (changes == 0) ? parseNoChangeSchedule(data) : (changes >= 2) ? parseMultiChangesSchedule(data) : parseSingleChangeSchedule(data);
-
-    console.log(parsedJsonSchedule)
-    //console.log(parseScheduleArray)
+    //console.log(parsedJsonSchedule)
 
     //return parsedJsonSchedule;
 }
 
-var urlRequest = urlSchedule + noChanges
+var urlRequest = urlSchedule + twoChanges
 request({method: 'GET', encoding: null, uri: urlRequest}, function(error,response, html) {
     if(!error && response.statusCode == 200) {
         var tripSchedule = [],
@@ -89,13 +94,13 @@ request({method: 'GET', encoding: null, uri: urlRequest}, function(error,respons
         $(scheduleTable).each(function(i, element) {
             var partialSchedule = [];
             $(this).children().each(function(i, element) {
-                partialSchedule.push($(this).html())
+                partialSchedule.push(deleteExtraWhitespaces($(this).html()))
             });
             tripSchedule.push(partialSchedule)
         });
 
         //console.log(tripSchedule)
-        parseScheduleArray(tripSchedule,countChanges);
+        parseScheduleArray(tripSchedule.slice(2),countChanges);
         //console.log(jsonSchedule)
     }
 });
